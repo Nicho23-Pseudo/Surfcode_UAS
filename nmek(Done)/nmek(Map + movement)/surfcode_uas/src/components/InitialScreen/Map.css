@@ -1,0 +1,66 @@
+.map-bg {
+  min-height: 100vh;
+  background: url("../../assets/Mapbackground.png") center center / cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-wrapper {
+  max-width: 1536px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.map-header {
+  background-color: #059669;
+  color: white;
+  padding: 16px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.map-container {
+  position: relative;
+  background-color: white;
+  width:800px;
+  height: 600px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  overflow: hidden;
+}
+
+.player-status-bar {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 1000;
+  font-family: sans-serif;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.minimap {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 150px;
+  height: 113px;
+  background-color: rgba(255,255,255,0.9);
+  border-radius: 0px;
+  overflow: hidden;
+  z-index: 20;
+  image-rendering: pixelated;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+}

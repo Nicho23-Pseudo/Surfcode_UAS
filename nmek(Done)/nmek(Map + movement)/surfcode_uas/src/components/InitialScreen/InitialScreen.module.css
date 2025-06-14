@@ -1,0 +1,1146 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.screenContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    #87ceeb 0%,
+    /* Sky blue */ #98d8e8 30%,
+    /* Light blue */ #90ee90 60%,
+    /* Light green */ #228b22 100% /* Forest green */
+  );
+  font-family: "Press Start 2P", cursive;
+  position: relative;
+  overflow: hidden;
+  animation: skyMovement 20s ease-in-out infinite alternate;
+}
+
+/* Animated cloud layer */
+.screenContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+      ellipse 80px 40px at 200px 100px,
+      rgba(255, 255, 255, 0.8),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 60px 30px at 400px 80px,
+      rgba(255, 255, 255, 0.6),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 100px 50px at 600px 120px,
+      rgba(255, 255, 255, 0.7),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 70px 35px at 50px 90px,
+      rgba(255, 255, 255, 0.9),
+      transparent
+    );
+  animation: floatingClouds 25s linear infinite;
+  z-index: 1;
+}
+
+/* Village ground and elements */
+.screenContainer::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(34, 139, 34, 0.3) 50%,
+    #228b22 100%
+  );
+  background-image: 
+    /* Trees */ radial-gradient(
+      circle 15px at 80px 180px,
+      #0f4f0f,
+      transparent
+    ),
+    radial-gradient(circle 12px at 95px 185px, #0f4f0f, transparent),
+    radial-gradient(circle 18px at 300px 175px, #0f4f0f, transparent),
+    radial-gradient(circle 10px at 500px 185px, #0f4f0f, transparent),
+    /* Village houses */ linear-gradient(135deg, #8b4513 0%, #a0522d 100%) 120px
+      160px / 40px 30px,
+    linear-gradient(135deg, #654321 0%, #8b4513 100%) 200px 165px / 35px 25px,
+    linear-gradient(135deg, #d2691e 0%, #cd853f 100%) 400px 155px / 45px 35px,
+    /* House roofs */ linear-gradient(45deg, #8b0000 0%, #dc143c 100%) 115px
+      145px / 50px 20px,
+    linear-gradient(45deg, #006400 0%, #32cd32 100%) 195px 150px / 45px 20px,
+    linear-gradient(45deg, #4b0082 0%, #8a2be2 100%) 395px 135px / 55px 25px;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.loaded {
+  animation: screenFadeIn 1.5s ease-out;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  border-radius: 15px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3),
+    inset 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.header i {
+  font-size: 2rem;
+  animation: magicalPlane 8s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(135, 206, 250, 0.8))
+    drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+  position: relative;
+}
+
+.header i::before {
+  content: "✨";
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  font-size: 0.8rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  color: #fff;
+  text-align: center;
+  text-shadow: 3px 3px 0 #ffd700, 6px 6px 0 rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 165, 0, 0.4);
+  letter-spacing: 1px;
+  line-height: 1.2;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+  font-family: "Press Start 2P", cursive;
+  background: linear-gradient(45deg, #fff, #ffd700, #fff, #ffa500);
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: titleGlow 3s ease-in-out infinite alternate,
+    titleShimmer 4s ease-in-out infinite;
+  position: relative;
+}
+
+.separator {
+  width: 100%;
+  max-width: 1000px;
+  height: 6px;
+  background: linear-gradient(90deg, #ffd700, #ffa500, #ffd700);
+  border: none;
+  position: relative;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin: 1rem 0 2rem;
+  border-radius: 3px;
+  z-index: 3;
+}
+
+.separator::before,
+.separator::after {
+  content: "⭐";
+  position: absolute;
+  font-size: 1.2rem;
+  top: -8px;
+  color: #ffd700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  animation: starTwinkle 2s ease-in-out infinite alternate;
+}
+
+.separator::before {
+  left: -15px;
+}
+
+.separator::after {
+  right: -15px;
+  animation-delay: 1s;
+}
+
+.form {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(240, 248, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+  backdrop-filter: blur(15px);
+  padding: 2rem;
+  border-radius: 25px;
+  border: 4px solid #ffd700;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6),
+    inset 0 0 20px rgba(255, 255, 255, 0.4), 0 15px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  z-index: 3;
+  animation: formFloat 6s ease-in-out infinite;
+}
+
+.form::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(
+    45deg,
+    #ffd700,
+    #ffa500,
+    #ff6b6b,
+    #87ceeb,
+    #ffd700
+  );
+  background-size: 400% 400%;
+  border-radius: 30px;
+  z-index: -1;
+  animation: borderGlow 4s ease-in-out infinite;
+}
+
+.form::after {
+  content: "🏰";
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 1.8rem;
+  animation: castleFloat 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
+
+.avatarSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  position: relative;
+  width: 100%;
+}
+
+.avatarSection::before {
+  content: "Choose Your Hero";
+  align-content: center;
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  color: #4b0082;
+  text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.9),
+    3px 3px 0 rgba(255, 215, 0, 0.3);
+  font-family: "Press Start 2P", cursive;
+  background: linear-gradient(45deg, #4b0082, #8a2be2, #4b0082);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: heroTextGlow 3s ease-in-out infinite alternate;
+  letter-spacing: 1px;
+}
+
+.avatarImage {
+  width: 120px;
+  height: 120px;
+  image-rendering: pixelated;
+  background: linear-gradient(145deg, #f0f8ff, #e6f3ff);
+  border: 4px solid #ffd700;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.7),
+    inset 0 0 15px rgba(255, 255, 255, 0.4), 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  animation: avatarPulse 3s ease-in-out infinite;
+}
+
+.avatarImage::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 215, 0, 0.4),
+    transparent,
+    rgba(255, 165, 0, 0.3),
+    transparent
+  );
+  border-radius: 20px;
+  animation: avatarShine 2s linear infinite;
+}
+
+.avatarImage:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.9),
+    inset 0 0 20px rgba(255, 255, 255, 0.5), 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.arrowButton {
+  background: linear-gradient(145deg, #4b0082, #6a0dad, #8a2be2);
+  border: 3px solid #ffd700;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.8rem;
+  color: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5), 0 6px 12px rgba(0, 0, 0, 0.4);
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.arrowButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.arrowButton:hover::before {
+  left: 100%;
+}
+
+.arrowButton:hover {
+  transform: scale(1.15);
+  background: linear-gradient(145deg, #6a0dad, #8a2be2, #9370db);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.arrowButton:active {
+  transform: scale(1.05);
+}
+
+.input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  border: 4px solid #ffd700;
+  border-radius: 15px;
+  outline: none;
+  background: linear-gradient(145deg, #f8f8ff, #f0f8ff, #fff);
+  color: #333;
+  font-family: "Press Start 2P", cursive;
+  box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.3),
+    0 0 15px rgba(255, 215, 0, 0.4), 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  letter-spacing: 1px;
+}
+
+.input::placeholder {
+  color: #888;
+  opacity: 0.8;
+  font-size: 0.8rem;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.input:focus {
+  border-color: #ffa500;
+  background: linear-gradient(145deg, #fff, #f8f8ff, #f0f8ff);
+  box-shadow: inset 0 0 15px rgba(255, 165, 0, 0.4),
+    0 0 25px rgba(255, 165, 0, 0.6), 0 8px 16px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
+}
+
+.startButton {
+  padding: 1rem 2.5rem;
+  background: linear-gradient(145deg, #ff6b6b, #ff8e8e, #ffb3b3, #ff6b6b);
+  color: white;
+  border: 4px solid #ffd700;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.5), 0 8px 16px rgba(0, 0, 0, 0.3);
+  font-family: "Press Start 2P", cursive;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.startButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.startButton:hover::before {
+  left: 100%;
+}
+
+.startButton:hover {
+  background: linear-gradient(145deg, #ff8e8e, #ffb3b3, #ffc9c9, #ff8e8e);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 107, 107, 0.8), 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.startButton:active {
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* New animation for hero text */
+@keyframes heroTextGlow {
+  0% {
+    text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.9),
+      3px 3px 0 rgba(255, 215, 0, 0.3);
+    transform: translateY(0);
+  }
+  100% {
+    text-shadow: 2px 2px 0 rgba(255, 255, 255, 1),
+      3px 3px 0 rgba(255, 215, 0, 0.6), 0 0 15px rgba(138, 43, 226, 0.5);
+    transform: translateY(-2px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .form {
+    padding: 1.5rem;
+    max-width: 320px;
+    gap: 1.5rem;
+  }
+
+  .avatarSection::before {
+    font-size: 0.7rem;
+    top: -30px;
+  }
+
+  .avatarImage {
+    width: 100px;
+    height: 100px;
+  }
+
+  .arrowButton {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  .input {
+    padding: 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .startButton {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form {
+    padding: 1.2rem;
+    gap: 1.2rem;
+  }
+
+  .avatarSection {
+    gap: 1rem;
+  }
+
+  .avatarSection::before {
+    font-size: 0.6rem;
+  }
+
+  .avatarImage {
+    width: 80px;
+    height: 80px;
+  }
+
+  .arrowButton {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+
+  .input {
+    font-size: 0.7rem;
+  }
+
+  .startButton {
+    font-size: 0.8rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: linear-gradient(145deg, #ccc, #ddd, #ccc) !important;
+}
+
+.disabled:hover {
+  transform: none !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Enhanced Loading Screen */
+.loadingScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    #1a1a2e 0%,
+    #16213e 30%,
+    #0f3460 60%,
+    #0e2954 100%
+  );
+  font-family: "Press Start 2P", cursive;
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+/* Magical starfield with twinkling effect */
+.loadingScreen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(2px 2px at 20px 30px, #ffd700, transparent),
+    radial-gradient(3px 3px at 40px 70px, #87ceeb, transparent),
+    radial-gradient(1px 1px at 90px 40px, #ffa500, transparent),
+    radial-gradient(2px 2px at 130px 80px, #ffb6c1, transparent),
+    radial-gradient(3px 3px at 160px 30px, #98fb98, transparent),
+    radial-gradient(1px 1px at 200px 90px, #dda0dd, transparent),
+    radial-gradient(2px 2px at 250px 60px, #f0e68c, transparent),
+    radial-gradient(1px 1px at 300px 45px, #ffa07a, transparent);
+  background-repeat: repeat;
+  background-size: 350px 200px;
+  animation: magicalSparkle 12s linear infinite;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+/* Floating magical elements */
+.loadingScreen::after {
+  content: "🏰✨🌟🗡️⚔️🛡️🏰✨";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 2rem;
+  color: rgba(255, 215, 0, 0.6);
+  animation: floatingElements 20s linear infinite;
+  z-index: 1;
+  line-height: 100vh;
+  word-spacing: 100px;
+  white-space: nowrap;
+}
+
+.pixelTitle {
+  font-size: 3rem;
+  background: linear-gradient(45deg, #ffd700, #ffa500, #ffd700);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 3px 3px 0 rgba(255, 107, 107, 0.8), 6px 6px 0 rgba(0, 0, 0, 0.5);
+  margin-bottom: 3rem;
+  animation: epicTitlePulse 3s ease-in-out infinite alternate;
+  position: relative;
+  z-index: 3;
+  letter-spacing: 3px;
+}
+
+.pixelTitle::before {
+  content: "⚔️";
+  position: absolute;
+  left: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: swordSpin 4s linear infinite;
+}
+
+.pixelTitle::after {
+  content: "🛡️";
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: shieldFloat 3s ease-in-out infinite;
+}
+
+.pixelBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(135, 206, 250, 0.1),
+    rgba(255, 255, 255, 0.1)
+  );
+  backdrop-filter: blur(20px);
+  padding: 3rem;
+  border: 4px solid rgba(255, 215, 0, 0.5);
+  border-radius: 25px;
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.4),
+    inset 0 0 30px rgba(255, 255, 255, 0.1), 0 20px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 3;
+}
+
+.pixelBox::before {
+  content: "🏰";
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  animation: castleGlow 4s ease-in-out infinite;
+}
+
+.pixelFrame {
+  width: 400px;
+  height: 35px;
+  border: 5px solid #ffd700;
+  background: linear-gradient(90deg, #1a1a2e, #16213e, #1a1a2e);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6), inset 0 0 15px rgba(0, 0, 0, 0.8);
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.pixelFrame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 12px,
+    rgba(255, 215, 0, 0.2) 12px,
+    rgba(255, 215, 0, 0.2) 14px
+  );
+  z-index: 2;
+}
+
+.pixelBar {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #ff6b6b 0%,
+    #ffd700 25%,
+    #32cd32 50%,
+    #87ceeb 75%,
+    #dda0dd 100%
+  );
+  background-size: 200% 100%;
+  animation: rainbowFlow 2s linear infinite;
+  transition: width 0.4s ease-out;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8),
+    inset 0 0 10px rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+}
+
+.pixelBar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  animation: barSparkle 1s ease-in-out infinite alternate;
+  border-radius: 0 5px 5px 0;
+}
+
+.pixelPercentage {
+  font-size: 1.3rem;
+  background: linear-gradient(45deg, #ffd700, #ffa500);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+  font-family: "Press Start 2P", cursive;
+  animation: percentageGlow 1s ease-in-out infinite alternate;
+  margin-top: 1rem;
+}
+
+.pixelText {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+  font-family: "Press Start 2P", cursive;
+  text-align: center;
+  margin-top: 2rem;
+  animation: mysticalText 3s ease-in-out infinite alternate;
+  position: relative;
+  z-index: 3;
+  max-width: 350px;
+  line-height: 1.6;
+  background: linear-gradient(90deg, #87ceeb, #ffd700, #87ceeb);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 4s ease-in-out infinite;
+}
+
+/* Epic Animations */
+@keyframes skyMovement {
+  0%,
+  100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes floatingClouds {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 100px));
+  }
+}
+
+@keyframes screenFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes magicalPlane {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) rotate(15deg) scale(1);
+    filter: drop-shadow(0 0 10px rgba(135, 206, 250, 0.8));
+  }
+  25% {
+    transform: translateX(-20px) translateY(-15px) rotate(25deg) scale(1.1);
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+  }
+  50% {
+    transform: translateX(-10px) translateY(10px) rotate(5deg) scale(0.95);
+    filter: drop-shadow(0 0 12px rgba(255, 182, 193, 0.8));
+  }
+  75% {
+    transform: translateX(15px) translateY(-12px) rotate(30deg) scale(1.05);
+    filter: drop-shadow(0 0 18px rgba(152, 251, 152, 0.8));
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.5) rotate(180deg);
+  }
+}
+
+@keyframes titleGlow {
+  0% {
+    text-shadow: 3px 3px 0 #ffd700, 6px 6px 0 rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(255, 215, 0, 0.6);
+  }
+  100% {
+    text-shadow: 3px 3px 0 #ffa500, 6px 6px 0 rgba(0, 0, 0, 0.5),
+      0 0 30px rgba(255, 165, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.4);
+  }
+}
+
+@keyframes starTwinkle {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.3) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes formFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+@keyframes borderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes castleFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.6));
+  }
+  50% {
+    transform: translateY(-8px) rotate(5deg) scale(1.1);
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+  }
+}
+
+@keyframes avatarPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.5),
+      inset 0 0 15px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.7),
+      inset 0 0 20px rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes avatarShine {
+  0% {
+    transform: translateX(-150%) rotate(35deg);
+  }
+  100% {
+    transform: translateX(150%) rotate(35deg);
+  }
+}
+
+/* Loading Screen Animations */
+@keyframes magicalSparkle {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50px) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0.6;
+  }
+}
+
+@keyframes floatingElements {
+  0% {
+    transform: translateX(-100px) translateY(0);
+  }
+  25% {
+    transform: translateX(25vw) translateY(-20px);
+  }
+  50% {
+    transform: translateX(50vw) translateY(10px);
+  }
+  75% {
+    transform: translateX(75vw) translateY(-15px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 100px)) translateY(0);
+  }
+}
+
+@keyframes epicTitlePulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+  }
+  100% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.9));
+  }
+}
+
+@keyframes swordSpin {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+@keyframes shieldFloat {
+  0%,
+  100% {
+    transform: translateY(-50%) scale(1);
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+  }
+  50% {
+    transform: translateY(-60%) scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+  }
+}
+
+@keyframes castleGlow {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+  }
+  50% {
+    transform: translateX(-50%) scale(1.2);
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.9));
+  }
+}
+
+@keyframes rainbowFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes barSparkle {
+  0% {
+    opacity: 0.7;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1.2);
+  }
+}
+
+@keyframes percentageGlow {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+  }
+  100% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9));
+  }
+}
+
+@keyframes mysticalText {
+  0% {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes textShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .screenContainer {
+    padding: 1rem;
+  }
+
+  .header {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+
+  .header i {
+    font-size: 3rem;
+  }
+
+  .form {
+    padding: 2rem;
+    max-width: 350px;
+    gap: 2rem;
+  }
+
+  .avatarImage {
+    width: 110px;
+    height: 110px;
+  }
+
+  .arrowButton {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+  }
+
+  .input {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .startButton {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  .pixelTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .pixelTitle::before,
+  .pixelTitle::after {
+    font-size: 1.5rem;
+  }
+
+  .pixelTitle::before {
+    left: -40px;
+  }
+
+  .pixelTitle::after {
+    right: -40px;
+  }
+
+  .pixelFrame {
+    width: 300px;
+    height: 30px;
+  }
+
+  .pixelBox {
+    padding: 2rem;
+    margin: 0 1rem;
+  }
+
+  .pixelText {
+    font-size: 0.8rem;
+    max-width: 280px;
+    line-height: 1.5;
+  }
+
+  .pixelPercentage {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.3rem;
+  }
+
+  .form {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .avatarSection {
+    gap: 1rem;
+  }
+
+  .avatarImage {
+    width: 90px;
+    height: 90px;
+  }
+
+  .arrowButton {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  .pixelTitle {
+    font-size: 1.5rem;
+  }
+
+  .pixelFrame {
+    width: 250px;
+    height: 25px;
+  }
+
+  .pixelText {
+    font-size: 0.7rem;
+    max-width: 220px;
+  }
+}
